@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>StudyHub - Your Study Companion</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #4CAF50; color: white; text-align: center; padding: 20px; }
+        nav { background-color: #333; color: white; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        section { padding: 20px; margin: 20px; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { color: #4CAF50; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        button { background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        #quiz-result { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>StudyHub</h1>
+        <p>Your go-to place for study notes, quizzes, and resources!</p>
+    </header>
+    <nav>
+        <a href="#notes">Notes</a>
+        <a href="#quizzes">Quizzes</a>
+        <a href="#resources">Resources</a>
+    </nav>
+    
+    <section id="notes">
+        <h2>Study Notes</h2>
+        <ul>
+            <li><strong>Math:</strong> Algebra basics - Variables, equations, and inequalities.</li>
+            <li><strong>Science:</strong> Physics laws - Newton's laws of motion.</li>
+            <li><strong>History:</strong> World Wars - Key events and outcomes.</li>
+        </ul>
+        <p>Add your own notes here!</p>
+    </section>
+    
+    <section id="quizzes">
+        <h2>Quizzes</h2>
+        <p>Test your knowledge!</p>
+        <div>
+            <p>Question 1: What is 2 + 2?</p>
+            <label><input type="radio" name="q1" value="3" id="q1a"> 3</label><br>
+            <label><input type="radio" name="q1" value="4" id="q1b"> 4</label><br>
+            <button id="submit-quiz" type="button">Submit</button>
+            <div id="quiz-result" role="status" aria-live="polite"></div>
+        </div>
+    </section>
+    
+    <section id="resources">
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://www.khanacademy.org" target="_blank" rel="noopener">Khan Academy</a> - Free online courses.</li>
+            <li><a href="https://www.coursera.org" target="_blank" rel="noopener">Coursera</a> - University-level courses.</li>
+            <li><a href="https://www.duolingo.com" target="_blank" rel="noopener">Duolingo</a> - Language learning.</li>
+        </ul>
+    </section>
+    
+    <script>
+        document.getElementById('submit-quiz').addEventListener('click', checkQuiz);
+
+        function checkQuiz() {
+            const answer = document.querySelector('input[name="q1"]:checked');
+            const result = document.getElementById('quiz-result');
+
+            if (!answer) {
+                result.textContent = 'Please select an answer.';
+                result.style.color = 'orange';
+                return;
+            }
+
+            if (answer.value === '4') {
+                result.textContent = 'Correct!';
+                result.style.color = 'green';
+            } else {
+                result.textContent = 'Wrong! Try again.';
+                result.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
